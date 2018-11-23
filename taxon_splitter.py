@@ -23,3 +23,4 @@ for i in files:
     taxon_num = splitter[1]
     if taxon_num <= num:
         #shutil.move('./' + i, args.new_dir+i)
+        print(i)
