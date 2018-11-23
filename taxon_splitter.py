@@ -18,11 +18,10 @@ os.chdir(args.taxa_dir)
 num = int(args.max_num)
 
 for i in files:
-    print(i)
     splitter = i.split('_')
     taxon_num = splitter[1]
     print(taxon_num)
     print(num)
     #if taxon_num <= num:
         #shutil.move('./' + i, args.new_dir+i)
-        print(i)
+        #print(i)
