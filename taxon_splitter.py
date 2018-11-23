@@ -21,6 +21,8 @@ for i in files:
     print(i)
     splitter = i.split('_')
     taxon_num = splitter[1]
-    if taxon_num <= num:
+    print(taxon_num)
+    print(num)
+    #if taxon_num <= num:
         #shutil.move('./' + i, args.new_dir+i)
         print(i)
