@@ -7,7 +7,7 @@ import subprocess
 
 
 def parse_args():
-    parser = argparse.ArgumentParser(description = 'program to move or remove numbers beneath a certain number')
+    parser = argparse.ArgumentParser()
     parser.add_argument('-d', action='store_true', description='delete certain files')
     parser.add_argument('-m', action='store_true', description='move certain files')
     parser.add_argument('--taxa_dir')
