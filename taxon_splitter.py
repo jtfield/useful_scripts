@@ -20,8 +20,7 @@ num = int(args.max_num)
 for i in files:
     splitter = i.split('_')
     taxon_num = splitter[1]
-    print(taxon_num)
-    print(num)
-    #if taxon_num <= num:
+    tx = int(taxon_num)
+    if tx <= num:
         #shutil.move('./' + i, args.new_dir+i)
-        #print(i)
+        print(i)
