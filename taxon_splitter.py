@@ -8,8 +8,8 @@ import subprocess
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument('-d', action='store_true', description='delete certain files')
-    parser.add_argument('-m', action='store_true', description='move certain files')
+    parser.add_argument('-d', action='store_true', help='delete certain files')
+    parser.add_argument('-m', action='store_true', help='move certain files')
     parser.add_argument('--taxa_dir')
     parser.add_argument('--new_dir')
     parser.add_argument('--max_num')
