@@ -49,3 +49,6 @@ def main():
                 print(i)
                 subprocess.Popen(['rm', args.taxa_dir+i], stdout=PIPE, stderr=PIPE)
                 #stdout, stderr = process.communicate()
+
+if __name__ == '__main__':
+    main()
