@@ -31,7 +31,7 @@ def main():
             if tx <= num:
                 #shutil.move('./' + i, args.new_dir+i)
                 print(i)
-                subprocess.call(['mv', args.taxa_dir+i, args.new_dir + '/'], stdout=PIPE, stderr=PIPE)
+                subprocess.call(['mv', args.taxa_dir+i, args.new_dir + '/'])
                 #stdout, stderr = process.communicate()
 
 
@@ -47,7 +47,7 @@ def main():
             tx = int(taxon_num)
             if tx <= num:
                 print(i)
-                subprocess.Popen(['rm', args.taxa_dir+i], stdout=PIPE, stderr=PIPE)
+                subprocess.Popen(['rm', args.taxa_dir+i])
                 #stdout, stderr = process.communicate()
 
 if __name__ == '__main__':
