@@ -9,7 +9,7 @@ import subprocess
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('-d', action='store_true', help='delete certain files')
-    parser.add_argument('-m', action='store_true', help='move certain files')
+    parser.add_argument('-m', action='store_true', help='copy certain files to a location')
     parser.add_argument('--taxa_dir')
     parser.add_argument('--new_dir')
     parser.add_argument('--max_num')
@@ -31,7 +31,7 @@ def main():
             if tx <= num:
                 #shutil.move('./' + i, args.new_dir+i)
                 print(i)
-                subprocess.call(['mv', args.taxa_dir+i, args.new_dir + '/'])
+                subprocess.call(['cp', args.taxa_dir+i, args.new_dir + '/'])
                 #stdout, stderr = process.communicate()
 
 
