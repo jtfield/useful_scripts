@@ -29,7 +29,7 @@ def main():
 
                 splitter = i.split('_')
                 taxon_num = splitter[1]
-                tx = int(taxon_num)
+                tx = float(taxon_num)
                 if tx <= num:
                     print(i)
                     subprocess.call(['cp', args.taxa_dir+i, args.new_dir + '/'])
