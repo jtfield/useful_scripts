@@ -25,13 +25,14 @@ def main():
         num = int(args.max_num)
 
         for i in files:
-            splitter = i.split('_')
-            taxon_num = splitter[1]
-            tx = int(taxon_num)
-            if tx <= num:
-                #shutil.move('./' + i, args.new_dir+i)
-                print(i)
-                subprocess.call(['cp', args.taxa_dir+i, args.new_dir + '/'])
+            if os.path.isfile(i):
+
+                splitter = i.split('_')
+                taxon_num = splitter[1]
+                tx = int(taxon_num)
+                if tx <= num:
+                    print(i)
+                    subprocess.call(['cp', args.taxa_dir+i, args.new_dir + '/'])
                 #stdout, stderr = process.communicate()
 
 
