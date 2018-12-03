@@ -46,17 +46,18 @@ def main():
         num = int(args.max_num)
 
         for i in files:
-            splitter = i.split('_')
-            taxon_num = splitter[1]
-            try:
-                tx = float(taxon_num)
-            except ValueError:
-                print("2nd value in file name is not a number. Use renamer script")
-            
-            if tx <= num:
-                print(i)
-                subprocess.Popen(['rm', args.taxa_dir+i])
-                #stdout, stderr = process.communicate()
+            if os.path.isfile(i):
+                splitter = i.split('_')
+                taxon_num = splitter[1]
+                try:
+                    tx = float(taxon_num)
+                except ValueError:
+                    print("2nd value in file name is not a number. Use renamer script")
+
+                if tx <= num:
+                    print(i)
+                    subprocess.Popen(['rm', args.taxa_dir+i])
+                    #stdout, stderr = process.communicate()
 
 if __name__ == '__main__':
     main()
