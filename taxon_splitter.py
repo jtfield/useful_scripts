@@ -29,7 +29,10 @@ def main():
 
                 splitter = i.split('_')
                 taxon_num = splitter[1]
-                tx = float(taxon_num)
+                try:
+                    tx = float(taxon_num)
+                except ValueError:
+                    print("2nd value in file name is not a number. Use renamer script")
                 if tx <= num:
                     print(i)
                     subprocess.call(['cp', args.taxa_dir+i, args.new_dir + '/'])
