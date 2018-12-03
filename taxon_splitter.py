@@ -48,7 +48,11 @@ def main():
         for i in files:
             splitter = i.split('_')
             taxon_num = splitter[1]
-            tx = int(taxon_num)
+            try:
+                tx = float(taxon_num)
+            except ValueError:
+                print("2nd value in file name is not a number. Use renamer script")
+            
             if tx <= num:
                 print(i)
                 subprocess.Popen(['rm', args.taxa_dir+i])
