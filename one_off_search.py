@@ -11,10 +11,10 @@ def parse_args():
 	return parser.parse_args()
 
 def main():
-    args = parse_args()
-    with_open(args.sam_file) as file:
-	read_position_start = args.gt_num
-	read_position_end = args.lt_num
+	args = parse_args()
+	with open(args.sam_file) as file:
+		read_position_start = args.gt_num
+		read_position_end = args.lt_num
 
 
 #with open('best_map.sam') as file:
@@ -33,7 +33,7 @@ def main():
 
 				# if num > 1830415 and num < 1830454:
 				# 	print(i)
-				if num > read_position_start and num < read_position_end:
+				if num > int(read_position_start) and num < int(read_position_end):
 					print(i)
 
 
