@@ -4,7 +4,7 @@ import argparse
 
 
 def parse_args():
-    parser = argparse.ArgumentParser()
+	parser = argparse.ArgumentParser()
 	parser.add_argument('--sam_file')
 	parser.add_argument('--gt_num')
 	parser.add_argument('--lt_num')
