@@ -1,8 +1,9 @@
 #! /usr/bin/python
+# reads in a fasta file with multiple >'s designating chromosomes or sequencesself.
+# takes the name of the chromosome you need and outputs that chromosome to a new files
+# example useage:
+# /path/to/chromosome_selecter.py --alignment_file /path/to/fasta --chr_name {CHROMOSOME NAME} --output_name {FILE OUTPUT NAME}
 
-import os
-import subprocess
-import sys
 import argparse
 
 def parse_args():
