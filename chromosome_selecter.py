@@ -5,6 +5,7 @@
 # /path/to/chromosome_selecter.py --alignment_file /path/to/fasta --chr_name {CHROMOSOME NAME} --output_name {FILE OUTPUT NAME}
 
 import argparse
+import re
 
 def parse_args():
     parser = argparse.ArgumentParser(description = 'Take name of chromosome and output a file containing only that chromosome')
@@ -24,12 +25,25 @@ def main():
     output = open(str(args.output_name),'w')
 
     for chunk in split_data:
-        if str(args.chr_name) in chunk:
+        finder = re.match(args.chr_name, chunk)
+        if finder:
+            print("found match")
             output.write('>')
             output.write(chunk)
+        else:
+            print("no match found")
 
     output.close()
     file.close()
+
+
+    # for chunk in split_data:
+    #     if str(args.chr_name) in chunk:
+    #         output.write('>')
+    #         output.write(chunk)
+    #
+    # output.close()
+    # file.close()
 
 
 
