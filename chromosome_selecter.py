@@ -11,7 +11,7 @@ def parse_args():
     parser = argparse.ArgumentParser(description = 'Take name of chromosome and output a file containing only that chromosome')
     parser.add_argument('--alignment_file')
     parser.add_argument('--chr_name')
-    parser.add_argument('--output_name')
+    #parser.add_argument('--output_name')
     return parser.parse_args()
 
 def main():
@@ -22,12 +22,16 @@ def main():
     data = file.read()
     split_data = data.split('>')
 
-    output = open(str(args.output_name),'w')
+
+    output = open(args.chr_name + "_" + args.alignment_file,'w')
+    #output = open(str(args.output_name),'w')
 
     for chunk in split_data:
         finder = re.match(args.chr_name, chunk)
         if finder:
             print("found match")
+
+            print(output)
             output.write('>')
             output.write(chunk)
         else:
