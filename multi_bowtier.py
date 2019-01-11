@@ -41,26 +41,26 @@ def main():
     list_reads = os.listdir(args.read_dir)
     for item in list_reads:
         splt_item = item.split('_')
-        splt_item[args.read_split_num] = int(splt_item[args.read_split_num])
+        splt_item[int(args.read_split_num)] = int(splt_item[int(args.read_split_num)])
         splt_list.append(splt_item)
-    organize = sorted(splt_list, key=lambda file: file[args.read_split_num])
+    organize = sorted(splt_list, key=lambda file: file[int(args.read_split_num)])
     #print(organize)
 
     dict_count = 0
     read_dict = defaultdict(list)
     for item in organize:
-        item[args.read_split_num] = str(item[args.read_split_num])
+        item[int(args.read_split_num)] = str(item[int(args.read_split_num)])
         #print(item)
         joined = '_'.join(item)
         #print(joined)
-        read_dict[int(item[args.read_split_num])].append(joined)
+        read_dict[int(item[int(args.read_split_num)])].append(joined)
         dict_count+=1
     #print(read_dict)
 
     ref_dict = {}
     for item in list_refs:
         split_ref = item.split('_')
-        ref_dict[int(split_ref[args.ref_split_num])] = item
+        ref_dict[int(split_ref[int(args.ref_split_num)])] = item
     #print(ref_dict)
 
     for read,read_value in read_dict.items():
