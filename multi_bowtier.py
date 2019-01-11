@@ -12,6 +12,7 @@ def parse_args():
     parser.add_argument('--ref_dir')
     parser.add_argument('--read_dir')
     parser.add_argument('--read_split_num')
+    parser.add_argument('--ref_split_num')
     return parser.parse_args()
 
 def main():
@@ -33,7 +34,7 @@ def main():
         for file in list_refs:
             if re.search(tail, file) and count <= file_count:
                 count+=1
-                #subprocess.call(['bowtie2-build', file, file])
+                subprocess.call(['bowtie2-build', file, file])
                 #print(file)
 
     splt_list = []
@@ -71,7 +72,7 @@ def main():
 
     #subprocess.call(['ls', args.read_dir'/newClade_2_01.R1_.fastq'])
     #subprocess.call(['pwd'])
-                subprocess.call(['bowtie2', '-p', '6', '--very-fast', '-x', args.ref_dir + ref_value , '-1', args.read_dir + read_value[1] , '-2', args.read_dir + read_value[0] , '--al-conc' , args.read_dir])
+                subprocess.call(['bowtie2', '-p', '6', '--very-fast', '-x', args.ref_dir + ref_value , '-1', args.read_dir + read_value[1] , '-2', args.read_dir + read_value[0] , '--al-conc' , args.read_dir + read_value[1]])
 
     #subprocess.call(['for i in $(ls )'])
 
