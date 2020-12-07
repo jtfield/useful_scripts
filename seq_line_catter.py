@@ -30,6 +30,8 @@ def main():
             seq = split_name_and_seq[1]
 
             joined_seq = ''.join(seq)
+            joined_seq = joined_seq.replace('\n', '')
+
             seq_len = len(joined_seq)
 
             lengths[name] = seq_len
