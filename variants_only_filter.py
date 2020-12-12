@@ -26,11 +26,14 @@ def all_equal(lst):
     return lst[:-1] == lst[1:]
 
 def iterative_all_equal(list_of_nucs):
+    missing_data = {'-', 'N'}
+    
     first_nuc = list_of_nucs[0]
-    # print(list_of_nucs)
+    
     for nuc in list_of_nucs:
+    # for nuc in list_of_nucs:
         # print(nuc)
-        if nuc != first_nuc:
+        if nuc != first_nuc and nuc not in missing_data:
             # print(nuc)
             return True
 
