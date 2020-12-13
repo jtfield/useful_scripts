@@ -26,7 +26,7 @@ def all_equal(lst):
     return lst[:-1] == lst[1:]
 
 def iterative_all_equal(list_of_nucs):
-    missing_data = {'-', 'N'}
+    missing_data = {'-', 'N' 'R', 'Y', 'M', 'S', 'W', 'K', 'V', 'D', 'H', 'B'}
     
     first_nuc = list_of_nucs[0]
     
