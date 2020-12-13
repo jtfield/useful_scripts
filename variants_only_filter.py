@@ -27,18 +27,26 @@ def all_equal(lst):
 
 def iterative_all_equal(list_of_nucs):
     missing_data = {'-', 'N' 'R', 'Y', 'M', 'S', 'W', 'K', 'V', 'D', 'H', 'B'}
-    
+    number_of_nucs = len(list_of_nucs)
+    variant_count = 0
+    invariant_count = 0
+
     first_nuc = list_of_nucs[0]
     
-    for nuc in list_of_nucs:
+    for num, nuc in enumerate(list_of_nucs):
     # for nuc in list_of_nucs:
         # print(nuc)
         if nuc != first_nuc and nuc not in missing_data:
             # print(nuc)
-            return True
+            variant_count+=1
 
         elif nuc == first_nuc:
-            continue
+            invariant_count+=1
+    
+    if variant_count > 0:
+        return True
+    elif invariant_count == number_of_nucs:
+        return False
 
 def check_lens(list_of_seqs):
     return len(list_of_seqs[:-1]) == len(list_of_seqs[1:])
