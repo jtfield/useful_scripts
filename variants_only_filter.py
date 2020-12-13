@@ -36,7 +36,7 @@ def iterative_all_equal(list_of_nucs):
     
     for num, nuc in enumerate(list_of_nucs):
         nuc = nuc.upper()
-        print(type(nuc))
+        # print(type(nuc))
         if nuc != first_nuc:
             degen_count = 0
             # for num, degen in enumerate(missing_data):
