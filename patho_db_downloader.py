@@ -21,7 +21,8 @@ def get_files_with_sp(data, species, max_num):
 
     for index, row in temp.iterrows():
         if num_count < max_num and type(row['Run']) != float and row['Run'] != None:
-            if row['Scientific name'] == species and type(row['Scientific name']) == str:
+            # if row['Scientific name'] == species and type(row['Scientific name']) == str:
+            if species in row['Scientific name'] and type(row['Scientific name']) == str:
                 num_count+=1
                 print("value")
                 print(row['Run'])
