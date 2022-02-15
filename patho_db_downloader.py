@@ -12,10 +12,11 @@ def parse_args():
     parser.add_argument('--metadata_file')
     parser.add_argument('--max_num', default = 1000)
     parser.add_argument('--sp', default=None)
+    parser.add_argument('--delim', default=',', help='Set delimiter for the csv or tsv file (DEFAULT: \',\' )'  )
     return parser.parse_args()
 
-def get_files_with_sp(data, species, max_num):
-    temp=pd.read_csv(data, usecols=['Run', 'Scientific name'], sep='\t')
+def get_files_with_sp(data, species, max_num, delim):
+    temp=pd.read_csv(data, usecols=['Run', 'Scientific name'], sep=delim)
     #print(temp)
     num_count = 0
 
@@ -27,13 +28,13 @@ def get_files_with_sp(data, species, max_num):
                 print("value")
                 print(row['Run'])
                 print(type(row['Run']))
-                subprocess.call(['fastq-dump', '--split-files', row['Run']])
+                subprocess.call(['fasterq-dump', '--split-files', row['Run']])
 
 
-def get_files_no_sp(data, max_num):
+def get_files_no_sp(data, max_num, delim):
     num_count = 0
 
-    temp=pd.read_csv(data, usecols=['Run'], sep='\t')
+    temp=pd.read_csv(data, usecols=['Run'], sep=delim)
 
     for index, row in temp.iterrows():
         if num_count < max_num and type(row['Run']) != float:
@@ -41,40 +42,20 @@ def get_files_no_sp(data, max_num):
             print("value")
             print(row['Run'])
             print(type(row['Run']))
-            subprocess.call(['fastq-dump', '--split-files', row['Run']])
+            subprocess.call(['fasterq-dump', '--split-files', row['Run']])
 
 def main():
     args = parse_args()
 
     data = args.metadata_file
     max_num = int(args.max_num)
-    # temp=pd.read_csv(data, usecols=['Run','Scientific name'], sep='\t')
-    #temp=pd.read_csv(data, usecols=['Run'])
-    # temp=pd.read_csv(data, sep='\t')
-    # print(temp.head())
-    
-
-    # num_count = 0
-    # #with open('employee_birthday.txt') as csv_file:
-    # #    csv_reader = csv.reader(csv_file, delimiter=',')
-    # #    line_count = 0
-
-    # temp=pd.read_csv(data, usecols=['Run'])
-    # #print(temp)
-
-    # for index, row in temp.iterrows():
-    #     if num_count < max_num and type(row['Run']) != float:
-    #         num_count+=1
-    #         print("value")
-    #         print(row['Run'])
-    #         print(type(row['Run']))
-    #         subprocess.call(['fastq-dump', '--split-files', row['Run']])
+    delim = args.delim
 
     if args.sp == None:
-        get_files_no_sp(data, max_num)
+        get_files_no_sp(data, max_num, delim)
 
     else:
-        get_files_with_sp(data, args.sp, max_num)
+        get_files_with_sp(data, args.sp, max_num, delim)
 
 
 
