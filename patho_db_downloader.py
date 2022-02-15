@@ -16,7 +16,7 @@ def parse_args():
     return parser.parse_args()
 
 def get_files_with_sp(data, species, max_num, delim):
-    temp=pd.read_csv(data, usecols=['Run', 'Scientific name'], sep=delim)
+    temp=pd.read_csv(data, usecols=['Run', 'Scientific name'], sep=delim, engine='python')
     #print(temp)
     num_count = 0
 
@@ -34,7 +34,7 @@ def get_files_with_sp(data, species, max_num, delim):
 def get_files_no_sp(data, max_num, delim):
     num_count = 0
 
-    temp=pd.read_csv(data, usecols=['Run'], sep=delim)
+    temp=pd.read_csv(data, usecols=['Run'], sep=delim, engine='python')
 
     for index, row in temp.iterrows():
         if num_count < max_num and type(row['Run']) != float:
